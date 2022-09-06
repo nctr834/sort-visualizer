@@ -1,0 +1,24 @@
+.array-container {
+    position: absolute;
+    left: 91px;
+    top: 50px;
+}
+
+.array-bar {
+    width: 6px;
+    background-color: rgba(68, 0, 194);
+    display: inline-block;
+    margin: 0 1px;
+}
+
+button {
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: 30px;
+    margin-top: 10px;
+    /*center the buttons horizontally*/
+
+}
