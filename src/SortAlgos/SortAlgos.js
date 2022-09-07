@@ -169,6 +169,7 @@ export const quickSortHelper = (arr, left, right, animations) => {
     quickSortHelper(arr, leftIndex, right, animations);
 }
 
+//driver for heap sort
 export const heapSort = (arr) => {
     const animations = [];
     heapSortHelper(arr, animations);
@@ -210,52 +211,3 @@ export const swap = (arr, i, j) => {
     arr[i] = arr[j];
     arr[j] = temp;
 }
-
-/* export const mergeSort = (arr) => {
-    const animations = [];
-    if (arr.length <= 1) return arr;
-    mergeSortHelper(arr, 0, arr.length - 1, animations);
-    return animations;
-}
-
-export const mergeSortHelper = (arr, left, right, animations) => {
-    if (left === right) return;
-    const middle = Math.floor((left + right) / 2);
-    mergeSortHelper(arr, left, middle, animations);
-    mergeSortHelper(arr, middle + 1, right, animations);
-    merge(arr, left, middle, right, animations);
-}
-
-export const merge = (arr, left, middle, right, animations) => {
-    let leftArray = arr.slice(left, middle + 1);
-    let rightArray = arr.slice(middle + 1, right + 1);
-    let leftIndex = 0;
-    let rightIndex = 0;
-    let j = left;
-    while (leftIndex < leftArray.length && rightIndex < rightArray.length) {
-        if (leftArray[leftIndex] < rightArray[rightIndex]) {
-            animations.push([j, leftArray[leftIndex]]);
-            arr[j] = leftArray[leftIndex];
-            leftIndex++;
-        }
-        else {
-            animations.push([j, rightArray[rightIndex]]);
-            arr[j] = rightArray[rightIndex];
-            rightIndex++;
-        }
-        j++;
-    }
-    while (leftIndex < leftArray.length) {
-        animations.push([j, leftArray[leftIndex]]);
-        arr[j] = leftArray[leftIndex];
-        leftIndex++;
-        j++;
-    }
-    while (rightIndex < rightArray.length) {
-        animations.push([j, rightArray[rightIndex]]);
-        arr[j] = rightArray[rightIndex];
-        rightIndex++;
-        j++;
-    }
-}
- */
