@@ -2,9 +2,9 @@ import React from 'react';
 import './SortVisualizer.css';
 import * as SortAlgos from '../SortAlgos/sortingAlgos';
 
-let BAR_NUMBER = Math.floor(window.innerWidth / 6);
+let BAR_NUMBER = Math.floor(window.innerWidth / 8);
 let BAR_NUMBER_MAX = BAR_NUMBER * 3;
-let ANIMATION_SPEED = 400 / BAR_NUMBER;
+let ANIMATION_SPEED = 800 / BAR_NUMBER;
 let ANIMATION_MULTIPLIER = 1;
 let ALG_NAME = 'Not Selected';
 let ALG_TC = 'N/A';
@@ -30,9 +30,9 @@ export default class SortVisualizer extends React.Component {
     render() {
         window.addEventListener('resize'
             , () => {
-                BAR_NUMBER = Math.floor(window.innerWidth / 6);
+                BAR_NUMBER = Math.floor(window.innerWidth / 8);
                 BAR_NUMBER_MAX = BAR_NUMBER * 3;
-                ANIMATION_SPEED = 400 / BAR_NUMBER;
+                ANIMATION_SPEED = 800 / BAR_NUMBER;
                 // eslint-disable-next-line
                 this.state.array = [];
                 this.resetArray();
@@ -55,7 +55,7 @@ export default class SortVisualizer extends React.Component {
                             .other{ background-color:#DDD;}
                             `}
                         </style>
-                        <button className={new_array_button} onClick={() => { if (this.state.sorting) { return; } FAST_MODE = 'Inactive'; SLOW_MODE = 'Inactive'; this.resetArray() }}>New Array</button>
+                        <button className={new_array_button} onClick={() => { if (this.state.sorting) { return; } ANIMATION_SPEED = 800 / BAR_NUMBER; FAST_MODE = 'Inactive'; SLOW_MODE = 'Inactive'; this.resetArray() }}>New Array</button>
                         <button className={speed_button} onClick={() => { if (this.state.sorting) { return; } SLOW_MODE = 'Active'; FAST_MODE = 'Inactive'; ANIMATION_SPEED = 150; this.resetArray() }}>Slow Mode</button>
                         <button className={speed_button} onClick={() => { if (this.state.sorting) { return; } FAST_MODE = 'Active'; SLOW_MODE = 'Inactive'; ANIMATION_SPEED = .5; this.resetArray() }}>Fast Mode</button>
 
@@ -90,7 +90,7 @@ export default class SortVisualizer extends React.Component {
                     <input
                         type="range"
                         min="10"
-                        max={(window.innerWidth / 3)}
+                        max={(window.innerWidth / 4)}
                         value={BAR_NUMBER}
                         className={slider}
                         onChange={(e) => {
@@ -98,7 +98,7 @@ export default class SortVisualizer extends React.Component {
 
                             BAR_NUMBER = e.target.value;
                             BAR_NUMBER_MAX = BAR_NUMBER * 3;
-                            ANIMATION_SPEED = 400 / BAR_NUMBER;
+                            ANIMATION_SPEED = 800 / BAR_NUMBER;
                             if (FAST_MODE === 'Active') {
                                 ANIMATION_SPEED = .5;
                             }
@@ -127,7 +127,7 @@ export default class SortVisualizer extends React.Component {
                                 key={i}
                                 style={
                                     {
-                                        height: `${num}px`,
+                                        height: `${num * window.innerHeight / 800}px`,
                                         width: `${(window.innerWidth / 3 / BAR_NUMBER) * Math.floor(BAR_NUMBER_MAX / BAR_NUMBER) - 2}px`
                                     }
                                 }>
@@ -243,7 +243,7 @@ export default class SortVisualizer extends React.Component {
                 setTimeout(() => {
                     const [barOneIdx, newHeight] = animations[i];
                     const barOneStyle = arrayBars[barOneIdx].style;
-                    barOneStyle.height = `${newHeight}px`;
+                    barOneStyle.height = `${newHeight * window.innerHeight / 800}px`;
                 }, i * ANIMATION_SPEED / ANIMATION_MULTIPLIER);
             }
         }
@@ -379,7 +379,7 @@ export default class SortVisualizer extends React.Component {
     }
     swapHeight(barOneStyle, barTwoStyle, barOneVal, barTwoVal) {
 
-        barOneStyle.height = `${barTwoVal}px`;
-        barTwoStyle.height = `${barOneVal}px`;
+        barOneStyle.height = `${barTwoVal * window.innerHeight / 800}px`;
+        barTwoStyle.height = `${barOneVal * window.innerHeight / 800}px`;
     }
 }

@@ -259,6 +259,8 @@ export const countingSort = (arr) => {
     const output = new Array(arr.length);
     // Place the values in the correct position
     for (let i = arr.length - 1; i >= 0; i--) {
+        animations.push([i, i]);
+        animations.push([arr[i], arr[i]]);
         // Find the index of the value in the count array
         output[count[arr[i] - min] - 1] = arr[i];
         // Decrement the count for the value by 1 since the value has been placed in the output array.
@@ -273,6 +275,7 @@ export const countingSort = (arr) => {
     }
     return animations;
 }
+
 
 //swap function for swapping values in an array
 export const swap = (arr, i, j) => {
